@@ -8,3 +8,6 @@
                 3: php artisan migrate  
 
     Configure Middleware
+       In app/Http/Kernel.php uncomment 
+         'api' => [
+            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
