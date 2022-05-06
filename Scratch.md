@@ -11,3 +11,5 @@
        In app/Http/Kernel.php uncomment 
          'api' => [
             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+    Create Sanctum Controller
+      php artisan make:controller SanctumController
