@@ -5,12 +5,12 @@ namespace App\Modules\Courses;
 
 class  CoursesService
 {
-    private  StudentsCoursesEnrollmentsValidator $validator;
-    private  StudentsCoursesEnrollmentsRepository $repository;
+    private  CoursesValidator $validator;
+    private  CoursesRepository $repository;
 
     public function __construct(
-        StudentsCoursesEnrollmentsValidator $validator,
-        StudentsCoursesEnrollmentsRepository $repository
+        CoursesValidator $validator,
+        CoursesRepository $repository
     )
     {
         $this->validator = $validator;
@@ -26,7 +26,7 @@ class  CoursesService
    {
        $this->validator->validatorUpdate($data);
        return  $this->repository->update(
-           StudentsCoursesEnrollmentsMapper::mapFrom($data)
+           CoursesMapper::mapFrom($data)
        );
    }
 

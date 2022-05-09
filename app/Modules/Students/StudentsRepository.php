@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class  StudentsRepository
 {
     private  $tableName = "students";
-    private  $studentColums =[
+    private  $selectColums =[
         "students.id",
         "students.name",
         "students.email",
@@ -18,9 +18,9 @@ class  StudentsRepository
         "students.updated_at AS updatedAt",
     ];
 
-    public  function  get(int $id) : Courses
+    public  function  get(int $id) : Students
     {
-        $selectColumns = implode(", " , $this->studentColums);
+        $selectColumns = implode(", " , $this->selectColums);
         $result = json_decode(json_encode(
             DB::selectOne("SELECT $selectColumns
                 FROM {$this->tableName}
@@ -34,10 +34,10 @@ class  StudentsRepository
             throw new InvalidArgumentException("Invalid student id.");
         }
 
-        return  CoursesMapper::mapFrom($result);
+        return  StudentsMapper::mapFrom($result);
     }
 
-    public  function  update(Courses $student) : Courses
+    public  function  update(Students $student) :Students
     {
         return  DB::transaction(function () use ($student){
             DB::table($this->tableName)->updateOrInsert([
@@ -69,6 +69,7 @@ class  StudentsRepository
     public function getByCourseId(int $courseId): array
     {
         $selectColumns = implode(", ", $this->selectColumns);
+
         $result = json_decode(json_encode(
             DB::select("SELECT $selectColumns
                 FROM students
@@ -88,7 +89,7 @@ class  StudentsRepository
         }
 
         return array_map(function ($row) {
-            return CoursesMapper::mapFrom($row);
+            return StudentsMapper::mapFrom($row);
         }, $result);
     }
 }

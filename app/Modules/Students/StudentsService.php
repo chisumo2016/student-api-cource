@@ -5,37 +5,37 @@ namespace App\Modules\Students;
 
 class  StudentsService
 {
-    private  CoursesValidator $validator;
-    private  CoursesRepository $repository;
+    private  StudentsValidator $validator;
+    private  StudentsRepository $repository;
 
     public function __construct(
-        CoursesValidator  $validator,
-        CoursesRepository $repository
+        StudentsValidator  $validator,
+        StudentsRepository $repository
     )
     {
         $this->validator = $validator;
         $this->repository = $repository;
     }
 
-    public  function get(int $id) : Courses
+    public  function get(int $id) : Students
    {
        return  $this->repository->get($id);
    }
 
     /**
-     * @param  integer $courseId
-     * @return Courses[]
+     * @param  integer studentId
+     * @return Students[]
      */
    public  function  getByCourseId(int $courseId) :array
    {
       return  $this->repository->getByCourseId($courseId);
    }
 
-   public  function  update(array $data) : Courses
+   public  function  update(array $data) : Students
    {
        $this->validator->validatorUpdate($data);
        return  $this->repository->update(
-           CoursesMapper::mapFrom($data)
+           StudentsMapper::mapFrom($data)
        );
    }
 

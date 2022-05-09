@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class  CoursesRepository
 {
     private  $tableName = "courses";
-    private  $coursesColums =[
+    private  $selectColumns =[
         "courses.id",
         "courses.name",
         "courses.capacity",
@@ -24,7 +24,7 @@ class  CoursesRepository
 
     public  function  get(int $id) : Courses
     {
-        $selectColumns = implode(", " , $this->coursesColums);
+        $selectColumns = implode(", " , $this->selectColumns);
         $result = json_decode(json_encode(
             DB::selectOne("SELECT $selectColumns
                 FROM {$this->tableName}
@@ -35,10 +35,10 @@ class  CoursesRepository
         ), true);
 
         if ($result === null){
-            throw new InvalidArgumentException("Invalid StudentsCoursesEnrollments id.");
+            throw new InvalidArgumentException("Invalid courses id.");
         }
 
-        return  StudentsCoursesEnrollmentsMapper::mapFrom($result);
+        return  CoursesMapper::mapFrom($result);
     }
 
     public  function  update(Courses $courses) : Courses
@@ -65,7 +65,7 @@ class  CoursesRepository
                 "deleted_at" => date("Y-m-d H:i:s")
             ]);
         if ($result !== 1){
-            throw  new InvalidArgumentException("Invalid StudentsCoursesEnrollments");
+            throw  new InvalidArgumentException("Invalid courses Id.");
         }
         return true;
     }

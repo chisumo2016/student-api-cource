@@ -8,8 +8,8 @@ use InvalidArgumentException;
 class  StudentsCoursesEnrollmentsDatabaseValidator
 {
 
-    private CoursesService    $coursesService;
-    private  StudentsService   $studentsService;
+    private   CoursesService    $coursesService;
+    private   StudentsService   $studentsService;
 
     public function __construct(CoursesService $coursesService, StudentsService $studentsService)
     {
