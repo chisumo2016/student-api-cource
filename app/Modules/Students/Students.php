@@ -1,0 +1,103 @@
+<?php
+declare(strict_types =1);
+
+namespace App\Modules\Students;
+
+class  Students
+{
+    private  ?int $id ;
+    private string  $name ;
+    private string  $email ;
+    private ?string $deletedAt ;
+    private string $createdAt ;
+    private ?string $updatedAt ;
+
+    public  function  __construct(
+        ?int    $id,
+        string  $name,
+        string  $email,
+        ?string  $deletedAt,
+        string  $createdAt,
+        ?string  $updatedAt,
+    )
+    {
+        $this->id = $id;
+        $this->name = $name;
+        $this->email = $email;
+        $this->deletedAt = $deletedAt;
+        $this->createdAt = $createdAt;
+        $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDeletedAt(): ?string
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCreatedAt(): string
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUpdatedAt(): ?string
+    {
+        return $this->updatedAt;
+    }
+
+    public  function  toArray() :array
+    {
+        return  [
+            "id"        => $this->id,
+            "name"      => $this->name,
+            "email"     => $this->email,
+            "deletedAt" => $this->deletedAt,
+            "createdAt" => $this->createdAt,
+            "updatedAt" => $this->updatedAt,
+        ];
+    }
+
+    public  function  toSQL() :array
+    {
+        return  [
+            "id"            => $this->id,
+            "name"          => $this->name,
+            "email"         => $this->email,
+            "deleted_at"     => $this->deletedAt,
+            "created_at"    => $this->createdAt,
+            "updated_at"    => $this->updatedAt,
+        ];
+    }
+}
