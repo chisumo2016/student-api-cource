@@ -80,8 +80,11 @@ class  StudentsRepository
             ])
         ), true);
 
-        if (count($result) === 0) {
+       /* if (count($result) === 0) {
             throw new InvalidArgumentException("No Student enrolled");
+        }*/
+        if (count($result) === 0) {
+            return [];
         }
 
         return array_map(function ($row) {

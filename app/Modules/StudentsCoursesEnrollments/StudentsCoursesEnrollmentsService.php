@@ -1,15 +1,17 @@
 <?php
 declare(strict_types =1);
 
-namespace App\Modules\Courses;
+namespace App\Modules\StudentsCoursesEnrollments;
 
-class  CoursesService
+use Illuminate\Support\Facades\Auth;
+
+class  StudentsCoursesEnrollmentsService
 {
     private  StudentsCoursesEnrollmentsValidator $validator;
     private  StudentsCoursesEnrollmentsRepository $repository;
 
     public function __construct(
-        StudentsCoursesEnrollmentsValidator $validator,
+        studentsCoursesEnrollmentsValidator $validator,
         StudentsCoursesEnrollmentsRepository $repository
     )
     {
@@ -17,13 +19,17 @@ class  CoursesService
         $this->repository = $repository;
     }
 
-    public  function get(int $id) : Courses
+    public  function get(int $id) : StudentsCoursesEnrollments
    {
        return  $this->repository->get($id);
    }
 
-   public  function  update(array $data) : Courses
+   public  function  update(array $data) : StudentsCoursesEnrollments
    {
+       $data = array_merge([
+           "enrolledByUserId" => Auth::user()->id
+       ]);
+
        $this->validator->validatorUpdate($data);
        return  $this->repository->update(
            StudentsCoursesEnrollmentsMapper::mapFrom($data)

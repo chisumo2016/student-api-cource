@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Modules\Core\HTTPResponseCodes;
-use App\Modules\Courses\CoursesService;
+use App\Modules\Courses\StudentsCoursesEnrollmentsService;
 use App\Modules\Sanctum\SanctumService;
 
 use Exception;
@@ -12,9 +12,9 @@ use Illuminate\Http\Response;
 
 class CourseController extends Controller
 {
-    private CoursesService $service;
+    private StudentsCoursesEnrollmentsService $service;
 
-    public  function  __construct(CoursesService $service)
+    public  function  __construct(StudentsCoursesEnrollmentsService $service)
     {
         $this->service = $service;
     }

@@ -35,10 +35,10 @@ class  CoursesRepository
         ), true);
 
         if ($result === null){
-            throw new InvalidArgumentException("Invalid Courses id.");
+            throw new InvalidArgumentException("Invalid StudentsCoursesEnrollments id.");
         }
 
-        return  CoursesMapper::mapFrom($result);
+        return  StudentsCoursesEnrollmentsMapper::mapFrom($result);
     }
 
     public  function  update(Courses $courses) : Courses
@@ -65,7 +65,7 @@ class  CoursesRepository
                 "deleted_at" => date("Y-m-d H:i:s")
             ]);
         if ($result !== 1){
-            throw  new InvalidArgumentException("Invalid Courses");
+            throw  new InvalidArgumentException("Invalid StudentsCoursesEnrollments");
         }
         return true;
     }
