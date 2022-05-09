@@ -1,9 +1,9 @@
 <?php
 declare(strict_types =1);
 
-namespace App\Modules\Students;
+namespace App\Modules\Courses;
 
-class  StudentsService
+class  CoursesService
 {
     private  CoursesValidator $validator;
     private  CoursesRepository $repository;
@@ -20,15 +20,6 @@ class  StudentsService
     public  function get(int $id) : Courses
    {
        return  $this->repository->get($id);
-   }
-
-    /**
-     * @param  integer $courseId
-     * @return Courses[]
-     */
-   public  function  getByCourseId(int $courseId) :array
-   {
-      return  $this->repository->getByCourseId($courseId);
    }
 
    public  function  update(array $data) : Courses

@@ -18,7 +18,7 @@ class  StudentsRepository
         "students.updated_at AS updatedAt",
     ];
 
-    public  function  get(int $id) : Students
+    public  function  get(int $id) : Courses
     {
         $selectColumns = implode(", " , $this->studentColums);
         $result = json_decode(json_encode(
@@ -34,10 +34,10 @@ class  StudentsRepository
             throw new InvalidArgumentException("Invalid student id.");
         }
 
-        return  StudentsMapper::mapFrom($result);
+        return  CoursesMapper::mapFrom($result);
     }
 
-    public  function  update(Students $student) : Students
+    public  function  update(Courses $student) : Courses
     {
         return  DB::transaction(function () use ($student){
             DB::table($this->tableName)->updateOrInsert([
@@ -85,7 +85,7 @@ class  StudentsRepository
         }
 
         return array_map(function ($row) {
-            return StudentsMapper::mapFrom($row);
+            return CoursesMapper::mapFrom($row);
         }, $result);
     }
 }

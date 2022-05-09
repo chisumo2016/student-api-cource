@@ -1,18 +1,19 @@
 <?php
 declare(strict_types =1);
 
-namespace App\Modules\Students;
+namespace App\Modules\Courses;
 
 use App\Modules\Common\MyHelpers;
 
-class  StudentsMapper
+class  CoursesMapper
 {
-    public static function  mapFrom(array $data) :Courses
+    public static function  mapFrom(array $data) : Courses
     {
         return  new Courses(
             MyHelpers::nullStringToInt($data["id"] ?? null),
             $data["name"],
-            $data["email"],
+            $data["capacity"],
+            $data["totalStudentEnrolled"] ?? 0,
             $data["deletedAt"] ?? null,
             $data["createdAt"] ?? date("Y-m-d H:i:s"),
             $data["updatedAt"] ?? null,

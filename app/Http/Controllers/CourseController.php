@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Modules\Core\HTTPResponseCodes;
+use App\Modules\Courses\CoursesService;
 use App\Modules\Sanctum\SanctumService;
-use App\Modules\Students\CoursesService;
+
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class StudentController extends Controller
+class CourseController extends Controller
 {
     private CoursesService $service;
 
