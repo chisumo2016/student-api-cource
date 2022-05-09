@@ -41,7 +41,7 @@ class StudentCourseEnrollmentController extends Controller
 
             return new Response(
                 $this->service->update($dataArray)->toArray(),
-                HTTPResponseCodes::Sucess["code"]
+                HTTPResponseCodes::success["code"]
             );
         } catch (Exception $error) {
             return new Response(

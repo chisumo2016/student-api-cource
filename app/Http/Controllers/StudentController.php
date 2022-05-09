@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Modules\Core\HTTPResponseCodes;
 use App\Modules\Sanctum\SanctumService;
-use App\Modules\Students\CoursesService;
+
+use App\Modules\Students\StudentsService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class StudentController extends Controller
 {
-    private CoursesService $service;
+    private StudentsService $service;
 
-    public  function  __construct(CoursesService $service)
+    public  function  __construct(StudentsService $service)
     {
         $this->service = $service;
     }
